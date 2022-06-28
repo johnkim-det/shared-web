@@ -92,9 +92,6 @@ def overwrite_with_cur_shared(user, name: str):
     clone_dir = '/tmp' / pathlib.Path(name)
     web_dir = clone_dir / user['web_dir']
     run(f'rm -rf {clone_dir}; git clone {user["repo"]} {clone_dir} --recurse-submodules')
-    # for repo_name, metadata in repos.items():
-    #     if repo_name == name or metadata['using_sm']: continue
-    #     src_dir = setup_user(metadata, repo_name)
     dest = web_dir / SHARED_DIR
     src = pathlib.Path.cwd() # FIXME find out where the current shared dir is relative to the test script
     run(f'rm -rf {dest}; mkdir -p {dest}')
